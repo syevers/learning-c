@@ -1,6 +1,6 @@
 # Ignore all files without an extension
 ./*.
-
+bin/
 a.out
 
 !*/
