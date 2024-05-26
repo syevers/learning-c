@@ -1,0 +1,90 @@
+Chapter 2 - C Fundamentals:
+
+Compiling steps:
+  1. Preprocessing 
+  2. Compiling
+  3. Linking
+
+Preprocessing - obeys commands that start with # (directives). Can add to and modify program.
+
+Compiling - translates program into machine instructions (object code).
+
+Linking - combines object code produced with additional code needed to yield complete executable.
+          Additional code includes library functions.
+
+
+
+Simple C program pseudocode
+
+```
+directives
+
+int main(void){ 
+    statements
+
+}
+
+````
+
+directives - Editing commands that modify the program prior to compilation
+
+Macro Definition - (#define) term for naming constants in file
+#define is a preprocessing directive
+ex: #define INCHES 12
+
+==================================================================================================
+
+Chapter 3 - Formatted Input/Output: 
+
+Conversion Specifiers:
+    %d - Displays a decimal integer in base 10
+    %e - Displays floating-point number in exponential form
+    %f - Displays ploating-point number in fixed decimal form
+    %g - Displays floating-point number in either exponential form or fixed decimal form,
+         depending on the numbers size. Useful for displaying numbers of unknown size.
+        
+Escape Sequences:
+    \a - Alert(bell)
+    \b - Backspace
+    \n - Newline
+    \t - Horizontal tab
+
+==================================================================================================
+
+Chapter 4 - Expressions
+
+Operator Precedence:
+    Highest: +  -  (unary)
+             *  /     %
+    Lowest:  +  -  (binary)
+
+    operators on the same line have equal precedence.
+    unary - does nothing, used to emphasize a numeric constant is positive
+
+Type Conversion:    
+    If v and e don't have the same type,
+    then the value of e is converted to the type of v as the assignment takes place:
+
+    int i;
+    float f;
+    i = 72.99f;
+    f = 136;
+
+    i is now 72 
+    f is now 136.0 
+
+Increment and Decrement Operators:
+    prefix: ++i and --i
+        * "pre-increment" yields i + 1 and as a side effect, increments i
+        * same for pre-decrement
+        ex: i = 1;
+            print(++i); -> prints 2
+            print(i);   -> prints 2
+    postfix: i++ and i--
+        * "post-increment" yields i first then increments i after.
+        *  same for post-decrement
+        ex: i = 1;
+            print(i++); -> prints 1
+            print(i);   -> prints 2
+
+left off programming projects for ch 4. pg 71
