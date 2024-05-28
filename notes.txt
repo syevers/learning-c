@@ -87,4 +87,4 @@ Increment and Decrement Operators:
             print(i++); -> prints 1
             print(i);   -> prints 2
 
-left off programming projects for ch 4. pg 71
+left off programming projects for ch 4. pg 83
