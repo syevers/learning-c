@@ -87,4 +87,49 @@ Increment and Decrement Operators:
             print(i++); -> prints 1
             print(i);   -> prints 2
 
-left off programming projects for ch 4. pg 83
+==================================================================================================
+
+Chapter 6 - Loops
+
+The "do" Statement:
+    * do is a while statement whose controlling expression is tested 
+    * after each execution of the loop body.
+
+"for" Statement Idioms:
+    Counting up from 0 to n—l:
+        for (i = O; i < n; i++)
+    Counting up from 1 to n:
+        for (i = 1; i <= n; i++)
+    Counting down from n—l to 0:
+        for (i = n - 1; i >= O; i--)
+    Counting down from n to 1:
+        for (i = n; i > O; i--)
+    Infinite loop:
+        for (;;)
+
+
+The "goto" Statement:
+    * capable of jumping to any statement in a function that has a label
+    * useful for exiting from switches and nested loops
+
+    ex: for (d = 2; d < n; d++)
+          if ( n % d == 0)
+              goto done;
+        
+        done:
+            if (d < n)
+                printf("%d is divisible by %d\n", n, d);
+            else
+                printf("%d is prime\n", n);
+
+The "null" Statement:
+    * expressed as just ";" by itself on a line
+    * good for writing loops whose bodies are empty
+
+
+
+
+
+
+
+
