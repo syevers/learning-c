@@ -126,10 +126,136 @@ The "null" Statement:
     * expressed as just ";" by itself on a line
     * good for writing loops whose bodies are empty
 
+==================================================================================================
+
+Chapter 7 - Basic Types
+
+Signed and Unsigned Integers:
+    * In C, integers are signed by default
+    * need to declare unsigned if we want to use an unsigned int
+
+    * Leftmost bit of a signed integer (known as the sign bit)
+        * 0 if positive 
+        * 1 if negative
+
+    * Integer with no sign bit is said to be unsigned
+
+    * Binary representation:
+        * 16 bit integer:
+            * 0111111111111111 has the value 32,767 (2^15 - 1)
+        * 32 bit integer: 
+            * 01111111111111111111111111111111 has value of 2,147,483,647 (2^31 - 1)
+    
+    * int is usually 32 bits,
+      may be 16 bits on older cpus
+    
+    * A Few Types of ints
+        * short int
+        * unsigned short in
+
+        * int
+        * unsigned int
+
+        * long int
+        * unsigned long int
+
+* In C, you can abbreviate the type and omit int
+    * i.e. long int can be declared by just long
+
+* C Standard rules for compilers
+    * short int, int, and long int must cover a certain range of values 
+    * int must not be shorter than short int, however short int can represent int ranges
+    * long int cannot be shorter than int
 
 
 
+Integer Types
+
+    32-bit machine
+
+    +-----------------------+-------------------+-------------------+
+    | Type                  | Smallest Value    | Largest Value     |
+    +-----------------------+-------------------+-------------------+
+    | short int             |          -32,768  |            32,767 |
+    | unsigned short int    |               0   |            65,535 |
+    | int                   |  -2,147,483,648   |  2,147,483,647    |
+    | unsigned int          |               0   |  4,294,967,295    |
+    | long int              |  -2,147,483,648   |  2,147,483,647    |
+    | unsigned long int     |               0   |  4,294,967,295    |
+    +-----------------------+-------------------+-------------------+
+
+    64-bit machine
+
+    +-----------------------+---------------------------+---------------------------+
+    | Type                  | Smallest Value            | Largest Value             |
+    +-----------------------+---------------------------+---------------------------+
+    | short int             |                  -32,768  |                   32,767  |
+    | unsigned short int    |                        0  |                   65,535  |
+    | int                   |           -2,147,483,648  |           2,147,483,647   |
+    | unsigned int          |                        0  |           4,294,967,295   |
+    | long int              | -9,223,372,036,854,775,808|  9,223,372,036,854,775,807|
+    | unsigned long int     |                        0  |18,446,744,073,709,551,615 |
+    +-----------------------+---------------------------+---------------------------+
+ 
+    * These ranges are not not mandated and may vary
+    * The best way to check the integer types for a implementation
+      is to check the <limits.h> header file.
 
 
+* C99 also has long long int and unsigned long long int.
+  Also allows you to implementation-defined extended integer types.
+    
+Integer Constants
+
+    * C allows integer constants to be written in decimal (base 10), octal (base 8), 
+      and hexadecimal (base 16).
+
+    * Octal: Written only using digits 0-7
+        * Each position represents a power of 8
+        * Must begin with 0
+
+    * Hexadecimal: writtin using 0-9 and letters A-F which stand for 10-15
+        * Each position represents a power of 16
+        * ALWAYS begins with 0x
+        * letters may be upper or lower case
+
+    * Decimal: Written only using digits 0-9
+        * Must not begin with 0
+
+    * All notations can be mixed together 
+
+    * To force the compiler to treat a constant as a long,
+      append the letter L to the end.
+        ex: 15 -> 15L, 0377 -> 0377L, 0x7fff -> 0x7fffL
+
+    * To force the compiler to treat a constant as unsigned,
+      append the letter U to the end.
+        ex: 15 -> 15U, 0377 -> 0377U, 0x7fff -> 0x7fffU
+
+    * L and U may be used in combination to show both
+         
+
+
+
+Integer Constants in C99
+
+    * In C99, integer constants that end with either LL or ll (the case of the two letters
+    must match) have type long long int. Adding the letter U (or u) before or after
+    the LL or ll denotes a constant of type unsigned long long int.
+
+    * C99's general rules for determining the type of an integer constant are a bit different 
+      from those in C89. The type of a decimal constant with no suffix (U, u, L, l, LL, or ll) is 
+      the "smallest" of the types int, long int, or long long int that can represent 
+      the value of that constant. For an octal or hexadecimal constant, however,
+      the list of possible types is int, unsigned int, long int, unsigned long int, 
+      long long int, and unsigned long long int, in that order. Any suffix at the end of a constant 
+      changes the list of possible types.
+
+
+      ex: a constant that ends with U (or u) must have one of the types unsigned int,
+          unsigned long int, or unsigned long long int. A decimal constant that ends
+          with L (or l) must have one of the types long int or long long int.
+          There's also a provision for a constant to have an extended integer type if it's too large
+          to represent using one of the standard integer types.
 
 
