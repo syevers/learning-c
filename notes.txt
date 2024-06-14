@@ -258,4 +258,136 @@ Integer Constants in C99
           There's also a provision for a constant to have an extended integer type if it's too large
           to represent using one of the standard integer types.
 
+Integer Overflow
 
+    * Occurs when arithmetic operations are performed on integers and the result
+      is too large to represent.
+
+      ex: When an arithmetic operation is performed on two ints, the result MUST be represented 
+          as an int. If it cannot be represented as an int (because it requires too many bits),
+          then an overflow has occurred.
+
+    * Behavior when overflow occurs depends on whether the operands were signed or unsigned.
+
+    * Overflow on Signed Ints: 
+        * Program behavior is undefined; behavior may vary.
+    
+    * Overflow on Unsigned Ints:
+        * Result is defined
+        * Get the correct ansew modulo 2^n where n is the number of bits used to 
+          store the result.
+
+    * For example, if we add 1 to the unsigned 16-bit number 65,535, 
+      the result is guaranteed to be 0.
+
+      ex: Max unsigned short int = 65,535 
+            65,535 + 1 = 65,536
+            then we take the mod of 65,536
+            65,536 % 65,536 = 0
+            
+Reading and Writing Integers
+
+    * Unsigned Integers:
+        * When reading or writing an unsigned integer, 
+          use the letter u, o, or x instead of d in the conversion specification.
+
+          ex:
+            unsigned int i;
+
+            scanf("%u", &i);    // reads i in base 10
+            printf("%u", &i);    // writes i in base 10
+
+            scanf("%o", &i);    // reads i in base 8
+            printf("%o", &i);    // writes i in base 8
+            
+            scanf("%x", &i);    // reads i in base 16
+            printf("%x", &i);    // writes i in base 16
+
+    * Short Integers:
+        * When reading or writing short integers,
+          put the letter 'h' in front of d, o, u, or x.
+
+          ex: 
+            short s;
+
+            scanf("%hd", &s);
+
+    * Long Integers:
+        * When reading or writing long integers,
+          put the letter 'l' in front of d, o, u, or x.
+
+          ex:
+            long l;
+
+            scanf("%ld", &l);
+
+        In C99:
+          ex:
+            long long ll;
+
+            scanf("11d", &11);
+
+
+Floating Types
+
+    * 3 Floating Types in C
+        
+        * float: 
+            * single-precision floating-point
+            * suitable when amount of precision isn't critical
+            * ex: calculating temps to one decimal point
+
+        * double:
+            * double-precision floating-point 
+            * provides greater precision, enough for most programs
+
+        * long double:
+            * Extended-precision floating-point 
+            * supplies ultimate precision (rarely used)
+
+
+
+        Floating Type Characteristics
+
+        +-----------+------------------------+--------------------+-------------+
+        |   Type    | Smallest Positive Value|    Largest Value   |  Precision  |
+        +-----------+------------------------+--------------------+-------------+
+        |  float    |     1.17549 x 10^-38   |    3.40282 x 10^38 |   6 digits  |
+        |  double   |     2.22507 x 10^-308  |    1.79769 x 10^308|  15 digits  |
+        +-----------+------------------------+--------------------+-------------+
+
+Floating Constants
+
+    * Floating constants must contain a decimal point and/or exponent
+
+    * The exponent indicates the power of 10 by which a number is scaled,
+      must be preceded by the letter E (or e). 
+
+    * An optional + or - sign may appear after the E
+
+    * Valid constants:
+         57.0 57. 57.0e0 57E0 5.7e1 5.7e+1 .57e2 570.e-1
+
+    * By default, floating constants are stored as double-digit precision numbers.
+
+    * To force the compiler to store a floating point constant in float,
+      put the letter F (or f) at the end of the constant.
+
+    * For long double format, put the letter L (or l) at the end.
+
+    ex: reading value of type double, put in in front of e, f, or g:
+        
+        double d;
+
+        scanf("%lf", &d);
+
+        NOTE: only use l in scanf, not printf.
+
+Character Types
+
+    * Char:
+        * a variable type that can be assigned to any single character
+
+Operations on Characters
+
+    * C treats characters as small integers 
